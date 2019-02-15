@@ -1,33 +1,46 @@
 #!/usr/local/bin/bash
 
-FILE="/home/oleksandr/my_dir/test.txt~"
-IP_REGEX="([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])"
-
 . /etc/rc.subr
 
 name="calc_ip"
-rcvar="calc_ip_enable"
 
-#command="/usr/sbin/${name}"
-#command_args="mock arguments > /dev/null 2>&1"
+command="/usr/sbin/daemon"
+calc_ip_user="calc_ip"
 
-#pidfile="/var/run/${name}.pid" 
+pidfile="/var/run/${name}.pid"
 
 start_cmd="${name}_start"
-stop_cmd=":"
-
-#sig_reload="USR1"
+stop_cmd="calc_ip_stop"
+status_cmd="calc_ip_status"
+restart_cmd="calc_ip_restart"
 
 calc_ip_start(){
-        if [ $# -gt 0 ]; then
-		echo "Number of requests for $1: "
-                ip_with_escapes=$(echo $1 | sed s/'\.'/'\\.'/g)
-            	egrep -w "$ip_with_escapes" "$FILE" | uniq -c
+    /usr/sbin/daemon -P ${pidfile} -r -f -u $calc_ip_user $command
+    /home/oleksandr/calc_ip.sh $1
+}
+
+calc_ip_stop() {
+       if [ -e "${pidfile}" ]; then
+               kill -s TERM `cat ${pidfile}`
+       else
+               echo "${name} is not running"
+       fi
+
+}
+
+calc_ip_status() {
+        if [ -e "${pidfile}" ]; then
+                echo "${name} is running as pid `cat ${pidfile}`"
         else
-		echo "You have not choosen ip"
-        	egrep -o "$IP_REGEX" "$FILE" | sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 | uniq -c
-	fi
+            echo "${name} is not running"
+        fi
+}
+
+calc_ip_restart() {
+        calc_ip_stop
+        calc_ip_start
 }
 
 load_rc_config $name
 run_rc_command "$@"
+
