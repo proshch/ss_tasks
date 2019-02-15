@@ -1,0 +1,33 @@
+#!/usr/local/bin/bash
+
+FILE="/home/oleksandr/my_dir/test.txt~"
+IP_REGEX="([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])"
+
+. /etc/rc.subr
+
+name="calc_ip"
+rcvar="calc_ip_enable"
+
+#command="/usr/sbin/${name}"
+#command_args="mock arguments > /dev/null 2>&1"
+
+#pidfile="/var/run/${name}.pid" 
+
+start_cmd="${name}_start"
+stop_cmd=":"
+
+#sig_reload="USR1"
+
+calc_ip_start(){
+        if [ $# -gt 0 ]; then
+		echo "Number of requests for $1: "
+                ip_with_escapes=$(echo $1 | sed s/'\.'/'\\.'/g)
+            	egrep -w "$ip_with_escapes" "$FILE" | uniq -c
+        else
+		echo "You have not choosen ip"
+        	egrep -o "$IP_REGEX" "$FILE" | sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 | uniq -c
+	fi
+}
+
+load_rc_config $name
+run_rc_command "$@"
