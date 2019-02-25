@@ -1,10 +1,10 @@
-source /home/oleksandr/mysql_scripts/deanery/data/faculties.sql
-source /home/oleksandr/mysql_scripts/deanery/data/departments.sql
-source /home/oleksandr/mysql_scripts/deanery/data/groups.sql
-source /home/oleksandr/mysql_scripts/deanery/data/personal_info.sql 
-source /home/oleksandr/mysql_scripts/deanery/data/students.sql
-source /home/oleksandr/mysql_scripts/deanery/data/teachers.sql
-source /home/oleksandr/mysql_scripts/deanery/data/subjects.sql
-source /home/oleksandr/mysql_scripts/deanery/data/schedule.sql
-source /home/oleksandr/mysql_scripts/deanery/data/marks.sql
+source data/faculties.sql
+source data/departments.sql
+source data/groups.sql
+source data/personal_info.sql 
+source data/students.sql
+source data/teachers.sql
+source data/subjects.sql
+source data/schedule.sql
+source data/marks.sql
 
