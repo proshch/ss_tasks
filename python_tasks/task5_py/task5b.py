@@ -7,25 +7,28 @@ from functools import reduce
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('-a', choices=('+', '-', '*', '/'), dest='sign', help='Choose action command')
+parser.add_argument('-a', choices=('+', '-', '*', '/'), dest='sign', 
+                    help='Choose action command')
 
-parser.add_argument('-v', action='append', dest='numbers',
+parser.add_argument('-v', action='append', type=float, dest='numbers',
                     default=[],
                     help='Add repeated values to a list',
                     )
 
 args = parser.parse_args()
 
-num = [int(i) if i.find('.') == -1 else float(i) for i in args.numbers]
-
+num = args.numbers
 if args.sign == '+':
     result = sum(num)
 elif args.sign == '-':
     result = reduce((lambda x, y: x - y), num)
-elif args.sign == '/':
+elif args.sign == '/' and 0 not in num[1:]:
     result = reduce((lambda x, y: x / y), num)
 elif args.sign == '*':
     result = reduce((lambda x, y: x * y), num)
-
+else:
+    print("Try again")
+    result=''
 
 print(f'{args.sign}'.join([str(elem) for elem in num])+'='+str(result))
+

@@ -6,19 +6,17 @@ import sys
 
 b = float(sys.argv[3])
 a = float(sys.argv[1])
- 
-if sys.argv[1].find('.') == -1:
-    a = int(sys.argv[1])
 
-if sys.argv[3].find('.') == -1:
-    b = int(sys.argv[3])
+if sys.argv[2] == '/' and b == 0:
+    action = {'/': 'Zero division'}
+else:
+    action = {
+        '+': a+b,
+        '-': a-b,
+        '/': a/b,
+        '*': a*b
+    }
 
-action = {
-    '+': a+b,
-    '-': a-b,
-    '/': a/b,
-    '*': a*b
-}
 
 result = action[sys.argv[2]]
 
