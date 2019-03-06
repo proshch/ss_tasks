@@ -16,18 +16,27 @@ def makebold(func):
     return wrapped
 
 def make_paragraph(func):
-    """Decorator for wrap text int <p> tag"""
+    """Decorator for wrap text in <p> tag"""
     
     def wrapped():
         return "\t<p>" + func() + "</p>"
     return wrapped
 
+def own_tag(tag):
+    def tag_decorator(func):
+        """Decorator for wrap text in own tag"""
+     
+        def wrapped():
+            return "<" + tag + ">" + func() + "<" + tag+ "/>"
+        return wrapped
+    return tag_decorator
+
 @htmlbase
 @make_paragraph
 @makebold
-def hello():
+@own_tag('o')  
+def say_hello():
     """Method for saying Hi to my amigo"""
     
     return "Hello, amigo!"
 
-print hello()
