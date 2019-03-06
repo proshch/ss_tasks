@@ -9,9 +9,10 @@ def change_text(old_new, smth_to_delete):
     """Decorator for change my text"""
     
     def wrapped(func):
-        text = func()
+        text = func().lower()
+        text = text.replace(*old_new)
         for w in smth_to_delete:
-           text = text.replace(*old_new).replace(w, '\b')
+           text = text.replace(w, '\b')
         print(text)
         return func
     return wrapped
