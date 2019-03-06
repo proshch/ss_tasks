@@ -9,16 +9,14 @@ def chunk(start, end, step):
     end - last number in list
     step - size of chunk
     """
-    step = round(step)
-    for i in range(start, end, step):
-        my_list = [n for n in range(start, start+step) if n < end]
-        yield my_list
-        start+=step
- 
+    while start < end:
+        new_end = start+step
+        if new_end > end:
+            new_end = end
+        yield [i for i in range(start, new_end)]
+        start += step 
 
-chunk_gen = chunk(5, 27, 6.4)
+chunk_gen = chunk(7, 25, 7)
 for i in chunk_gen:
     print(i)
-
-
 
