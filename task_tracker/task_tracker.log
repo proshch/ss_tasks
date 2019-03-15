@@ -1,0 +1,25 @@
+2019-03-15 20:49:50,968 - clientLogger - INFO - client - 127.0.0.1 choosed job 1
+2019-03-15 20:49:50,968 - clientLogger - INFO - client - 127.0.0.1 choosed job 1
+2019-03-15 20:49:50,985 - clientLogger - INFO - Job was done successfully: 
+ResultCounter({'my': 2, 'little': 2, 'friend': 2, 'na2019-03-15 20:49:50,986 - serverLogger - INFO - POST REQUEST client - 127.0.0.1 status=200
+2019-03-15 20:51:13,410 - serverLogger - INFO - GET REQUEST: client - 
+127.0.0.1 status code = 200
+2019-03-15 20:51:13,428 - serverLogger - INFO - POST REQUEST client - 127.0.0.1 status=400
+019-03-15 20:51:13,412 - clientLogger - INFO - client - 127.0.0.1 choosed job 1
+2019-03-15 20:51:13,412 - clientLogger - INFO - client - 127.0.0.1 choosed job 1
+2019-03-15 20:51:13,427 - clientLogger - ERROR - Client didn`t choose any task or task is unavailable
+2019-03-15 20:51:13,427 - clientLogger - ERROR - Client didn`t choose any task or task is unavailable
+2019-03-15 21:07:05,345 - serverLogger - ERROR - GET REQUEST: client - 
+127.0.0.1 status code = 400
+2019-03-15 21:07:05,347 - clientLogger - INFO - client -  choosed job None
+2019-03-15 21:07:05,347 - clientLogger - INFO - client -  choosed job None
+2019-03-15 21:07:05,347 - clientLogger - ERROR - Client didn`t choose any task or task is unavailable
+2019-03-15 21:07:05,347 - clientLogger - ERROR - Client didn`t choose any task or task is unavailable
+2019-03-15 21:07:05,348 - serverLogger - INFO - POST REQUEST client - 127.0.0.1 status=400
+2019-03-15 21:07:22,041 - serverLogger - ERROR - GET REQUEST: client - 
+127.0.0.1 status code = 400
+2019-03-15 21:07:22,043 - clientLogger - INFO - client -  choosed job None
+2019-03-15 21:07:22,043 - clientLogger - INFO - client -  choosed job None
+2019-03-15 21:07:22,044 - clientLogger - ERROR - Client didn`t choose any task or task is unavailable
+2019-03-15 21:07:22,044 - clientLogger - ERROR - Client didn`t choose any task or task is unavailable
+2019-03-15 21:07:22,045 - serverLogger - INFO - POST REQUEST client - 127.0.0.1 status=400
