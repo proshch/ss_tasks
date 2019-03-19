@@ -8,7 +8,7 @@ import re
 import MySQLdb
 
 
-def job1(file_name):
+def count_unique_words(file_name):
     """Count all unique words in file
 
     Positional argument:
@@ -22,7 +22,7 @@ def job1(file_name):
             count = Counter(words)
     return count
 
-def job2(path="/home/oleksandr/testdir"):
+def make_dir(path="/home/oleksandr/testdir"):
     """Make directory for path
 
     Positional argument:
@@ -33,7 +33,7 @@ def job2(path="/home/oleksandr/testdir"):
     res = 'Path '+path+' is created'
     return res
 
-def job3(path="/home/oleksandr/testdir"):
+def remove_dir(path="/home/oleksandr/testdir"):
     """Remove directory for path
 
     Positional argument:
@@ -44,13 +44,13 @@ def job3(path="/home/oleksandr/testdir"):
     res = 'Directory '+path+' was deleted!'
     return res
 
-def job4():
+def dump_command():
     """Dump result of shell command"""
 
     result = os.popen('ps').read()
     return result
 
-def job5():
+def generate_job():
     """Generate random jobs"""
 
     db_conn = MySQLdb.connect("localhost", "oleksandr", "K@tchi1899", "tasks")

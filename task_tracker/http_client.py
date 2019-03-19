@@ -6,7 +6,7 @@ import argparse, requests
 import logging
 import logging.config
 from db_conn import update_result, is_available
-from jobs import job1, job2, job3, job4, job5
+from jobs import *
 
 
 logging.config.fileConfig('log.conf')
