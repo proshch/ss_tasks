@@ -1,0 +1,58 @@
+
+2019-03-19 20:03:43,918 - HTTPServer - INFO - GET request from 127.0.0.1 status_code: 200
+2019-03-19 20:04:23,375 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:04:26,031 - HTTPServer - INFO - GET request from 127.0.0.1 status_code: 200
+2019-03-19 20:04:26,055 - HTTPServer - INFO - POST request status_code: 400 - 'result'
+2019-03-19 20:05:40,917 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:05:44,999 - HTTPServer - INFO - GET request from 127.0.0.1 status_code: 200
+2019-03-19 20:05:45,023 - HTTPServer - INFO - POST request status_code: 400 - 'result'
+2019-03-19 20:07:35,478 - HTTPServer - INFO - POST request status_code: 400 - 'result'
+2019-03-19 20:10:22,446 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:10:25,663 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 8 | status_code: 200
+2019-03-19 20:10:25,681 - HTTPServer - INFO - POST request status_code: 400 - 'result'
+2019-03-19 20:12:54,779 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:12:57,785 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 8 | status_code: 200
+2019-03-19 20:12:57,804 - HTTPServer - INFO - POST request | job - 8 | status_code: 400 | - No result for this job
+2019-03-19 20:18:09,731 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:18:13,605 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 4 | status_code: 200
+2019-03-19 20:18:13,661 - HTTPServer - INFO - POST request from 127.0.0.1 | job - 4 | status_code: 200 | with data:
+{'job_id': 4, 'result': '  PID TT  STAT    TIME COMMAND\n 2066  0  Ss   0:00.06 -bash (bash)\n 2279  0  T    0:00.00 rm -r ss_tasks/\n15488  0  S+   0:00.18 python3.6 http_server.py\n 2368  1  Is   0:00.10 -bash (bash)\n15343  1  S+   0:04.15 vim http_server.py\n 2543  2  Is   0:00.01 -bash (bash)\n 2558  2  I+   0:00.16 mysql -u oleksandr -p\n 4869  3  Ss   0:00.28 -bash (bash)\n15489  3  S+   0:00.17 python3.6 http_client.py\n15490  3  R+   0:00.02 ps\n', 'client': '127.0.0.1', 'code': 200}
+2019-03-19 20:19:32,914 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:19:38,017 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 6 | status_code: 200
+2019-03-19 20:20:25,264 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:20:27,630 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 8 | status_code: 200
+2019-03-19 20:20:27,648 - HTTPServer - INFO - POST request from 127.0.0.1| job - 8 | status_code: 400 | - No result for this job
+2019-03-19 20:22:28,805 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:22:32,095 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 6 | status_code: 200
+2019-03-19 20:22:32,113 - HTTPServer - INFO - POST request from client | job - 6 | status_code: 400 | No result for this job
+2019-03-19 20:22:47,750 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 8 | status_code: 200
+2019-03-19 20:22:47,767 - HTTPServer - INFO - POST request from client | job - 8 | status_code: 400 | No result for this job
+2019-03-19 20:23:34,052 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:23:39,250 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 2 | status_code: 201
+2019-03-19 20:23:39,272 - HTTPServer - INFO - POST request from 127.0.0.1 | job - 2 | status_code: 201 | with data:
+job_dir is created
+
+2019-03-19 20:24:09,123 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:24:13,253 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 5 | status_code: 200
+2019-03-19 20:24:13,279 - HTTPServer - INFO - POST request from 127.0.0.1 | job - 5 | status_code: 200 | Result:
+{'title': 'Dump pwd shell command', 'description': 'Print the current working directory', 'new': 1, 'in_progress': 0, 'done': 0} command task is created
+
+2019-03-19 20:25:02,609 - HTTPServer - INFO - Stopping httpd...
+
+2019-03-19 20:25:05,772 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 3 | status_code: 202
+2019-03-19 20:25:05,792 - HTTPServer - INFO - POST request from 127.0.0.1 | job - 3 | status_code: 202 | Result:
+Directory job_dir was deleted!
+
+2019-03-19 20:25:15,252 - HTTPServer - INFO - GET request from 127.0.0.1 | job - 7 | status_code: 200
+2019-03-19 20:25:15,270 - HTTPServer - ERROR - POST request from 127.0.0.1 | job - 7 | status_code: 400 | No result for this job
+

@@ -5,6 +5,7 @@ CREATE TABLE `Tasks` (
     `new` boolean,
     `in_progress` boolean,
     `done` boolean,
+    `client` varchar(100),
     PRIMARY KEY (`task_id`)
 );
 

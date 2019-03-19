@@ -39,3 +39,12 @@ def solve_job(job):
             Jobs.done(job["id"])
         except PermissionError:
             print('You don`t have permission to run this command')
+    elif job["id"] == 5:
+        try:
+            result = Solve.generate_random_job()
+            print(result)
+            Jobs.done(job["id"])
+        except PermissionError:
+            print('You don`t have permission to run this command')       
+    return result
+
