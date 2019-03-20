@@ -1,4 +1,12 @@
+"""Module for set statuse codes"""
+
 def success_status(job_id):
+    """Set success statuse code for different jobs
+
+    Positional argument:
+    job_id -- id of job
+    """
+
     if job_id == 1:
         code = 200
     elif job_id == 2:
