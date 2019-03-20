@@ -11,46 +11,48 @@ def solve_job(job):
     executed
     :param job: job
     """
-
+    result = None
     config = json.loads(job["config"])
     if job["type"] == 1:
         try:
-            result = Solve.count_unique_words(config)
+            result = Solve.count_unique_words(config['path'])
             print(result)
             Jobs.done(job["job_id"])
         except FileNotFoundError:
-            print('Can`t find file with words')
-    elif job["job_id"] == 2:
+            fail = 'Can`t find file with words'
+            Jobs.failed(job["job_id"], fail)
+    elif job["type"] == 2:
         try:
-            result = Solve.make_dir(config)
+            result = Solve.make_dir(config['path'])
             print(result)
             Jobs.done(job["job_id"])
-        except PermissionError:
-            print('You don`t have permissions')
         except FileExistsError:
-            print('Directory already exist')
-    elif job["id"] == 3:
+            fail = 'Directory already exist'
+            print(fail)
+            Jobs.failed(job["job_id"], fail)
+    elif job["type"] == 3:
         try:
-            result = Solve.remove_dir(config)
+            result = Solve.remove_dir(config['path'])
             print(result)
             Jobs.done(job["job_id"])
-        except PermissionError:
-            print('You don`t have permission to remove this directory')
         except FileNotFoundError:
-            print('Directory Not Found')
-    elif job["id"] == 4:
+            fail = 'Directory Not Found'
+            Jobs.failed(job["job_id"], fail)
+    elif job["type"] == 4:
         try:
-            result = Solve.dump_command(config)
+            result = Solve.dump_command(config['command'])
             print(result)
             Jobs.done(job["job_id"])
         except PermissionError:
-            print('You don`t have permission to run this command')
-    elif job["job_id"] == 5:
+            fail = 'You don`t have permission to run this command'
+            Jobs.failed(job["job_id"], fail)
+    elif job["type"] == 5:
         try:
-            result = Solve.generate_random_job(config)
+            result = Solve.generate_random_job(config['count'])
             print(result)
             Jobs.done(job["job_id"])
-        except PermissionError:
-            print('You don`t have permission to run this command')
+        except:
+            fail = 'You don`t have permission to run this command'
+            Jobs.failed(job["job_id"], fail)
     return result
 

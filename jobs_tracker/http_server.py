@@ -1,7 +1,6 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from db_conn import Jobs
 import json
-from io import BytesIO
 from status_code import success_status
 
 
@@ -22,7 +21,7 @@ class Handler(BaseHTTPRequestHandler):
             self.end_headers()
             # Send the html message
             self.wfile.write(job.encode())
-        except IndexError as e:
+        except IndexError:
             self.wfile.write(b'No available tasks')
             self.send_response(404)
         return
@@ -37,14 +36,14 @@ class Handler(BaseHTTPRequestHandler):
         message = json.loads(self.rfile.read(length).decode())   
         job_id = message["job_id"]
         code = message["code"]
-        client = message["client"]   
         try:
             result = message["result"]
-            Jobs.update_result(job_id, result, client)
+            Jobs.update_result(job_id, result)
             self.send_response(code)
         except KeyError:
             self.send_response(code)
         self.end_headers()
+
 
 if __name__ == '__main__':
     try:

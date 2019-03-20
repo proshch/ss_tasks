@@ -15,7 +15,7 @@ class Solve:
         count = {}
         words = []
         separators = [',', '.', '!', '?', ':', ';', ' ']
-        with open(config['path'], 'r') as text_file:
+        with open(config, 'r') as text_file:
             for line in text_file:
                 for s in separators:
                     words = line.split(s)
@@ -29,44 +29,62 @@ class Solve:
     @staticmethod
     def make_dir(config):
         """Make directory job_dir"""
-
-        os.mkdir(config['path'])
-        result = f"{config['path']} is created"
+        os.mkdir(config)
+        result = f"{config} is created"
         return result
 
     @staticmethod
     def remove_dir(config):
         """Remove directory job_dir"""
 
-        os.rmdir(config['path'])
-        result = f"Directory {config['path']} was deleted!"
+        os.rmdir(config)
+        result = f"Directory {config} was deleted!"
         return result
 
     @staticmethod
     def dump_command(config):
         """Dump result of shell command"""
 
-        result = os.popen(config["command"]).read()
+        result = os.popen(config).read()
         return result
 
     @staticmethod
     def generate_random_job(config):
         """Generate random job with shell commands"""
 
-        key = random.choice(list(commands))
-        db_tasks = MySQLdb.connect("localhost", "oleksandr", "K@tchi1899", "jobs_tracker")
-        cursor = db_tasks.cursor()
-        sql = """INSERT INTO Tasks(task_title, description, new, in_progress, done)
-                 VALUES (%s, %s, %s, %s, %s)"""
-        cursor.execute(sql, (commands[key]['title'],
-                             commands[key]['description'],
-                             commands[key]['new'],
-                             commands[key]['in_progress'],
-                             commands[key]['done'])
-        )
+        db_jobs = MySQLdb.connect("localhost", "oleksandr", "K@tchi1899", "jobs_tracker")
+        cursor = db_jobs.cursor()
 
-        db_tasks.commit()
-        db_tasks.close()
+        file_path = [
+            "/home/oleksandr/jobs_tracker/working_dir/test3.txt",
+            "/home/oleksandr/jobs_tracker/working_dir/text2.txt",
+            "/home/oleksandr/jobs_tracker/working_dir/text1.txt"]
+        dir_path = [
+            "/home/oleksandr/jobs_tracker/working_dir/new_dir1",
+            "/home/oleksandr/jobs_tracker/working_dir/new_dir2",
+            "/home/oleksandr/jobs_tracker/working_dir/new_dir3"]
 
-        result = f"{commands[key]} command task is created"
+        command = random.choice(['ls', 'date', 'ps'])
+        for i in range(config):
+            task_type = random.randint(1, 5)
+            if task_type == 1:
+                conf = '{"path": "%s"}' % random.choice(file_path)
+            elif task_type == 2:
+                conf = '{"path": "%s"}' % random.choice(dir_path)
+            elif task_type == 3:
+                conf = '{"path": "%s"}' % random.choice(dir_path)
+            elif task_type == 4:
+                conf = '{"command": "%s"}' % command
+            elif task_type == 5:
+                conf = '{"count": %d}' % random.randint(1, 5)
+
+            sql = """INSERT INTO Jobs(job_type, status, ctime, config)
+                    VALUES (%s, 'new', now(), %s)"""
+
+            cursor.execute(sql, (task_type, conf))
+            db_jobs.commit()
+        result = f"{config} tasks was created"
+
+        db_jobs.close()
+
         return result
