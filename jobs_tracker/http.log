@@ -1,0 +1,50 @@
+2019-03-21 20:33:56,825 http_client.py Client start working!
+
+2019-03-21 20:33:56,842 http_server.py GET - 404 NOT FOUND - No available jobs
+2019-03-21 20:33:56,843 http_client.py Remote Disconnected!
+2019-03-21 20:34:06,862 http_server.py GET - 200 OK: job_id: 649 new
+2019-03-21 20:34:06,862 http_client.py GET - 200 OK: job_id: 649
+2019-03-21 20:34:06,865 http_server.py POST - 200: job_id: 649 done
+2019-03-21 20:34:06,866 http_client.py POST - 200 OK: job_id: 649 {'Hello': 2, 'bye': 1, 'together': 1, 'Lol': 1}
+2019-03-21 20:34:16,882 http_server.py GET - 200 OK: job_id: 650 new
+2019-03-21 20:34:16,905 http_client.py GET - 200 OK: job_id: 650
+2019-03-21 20:34:16,908 http_server.py POST - 400: job_id: 650 failed
+2019-03-21 20:34:16,909 http_client.py POST - 400 Bad Request: job_id: 650 Directory already exists
+
+2019-03-21 20:34:26,920 http_server.py GET - 200 OK: job_id: 651 new
+2019-03-21 20:34:26,945 http_client.py GET - 200 OK: job_id: 651
+2019-03-21 20:34:26,948 http_server.py POST - 400: job_id: 651 failed
+2019-03-21 20:34:26,949 http_client.py POST - 400 Bad Request: job_id: 651 Such file not exists
+
+2019-03-21 20:34:36,960 http_server.py GET - 200 OK: job_id: 652 new
+2019-03-21 20:34:36,984 http_client.py GET - 200 OK: job_id: 652
+2019-03-21 20:34:36,986 http_server.py POST - 200: job_id: 652 done
+2019-03-21 20:34:36,987 http_client.py POST - 200 OK: job_id: 652 Thu Mar 21 20:34:36 EET 2019
+
+2019-03-21 20:34:40,888 http_client.py Client stoped working!
+
+2019-03-21 20:40:20,234 http_client.py Client start working!
+
+2019-03-21 20:40:20,263 http_client.py GET - 200 OK: job_id: 653
+2019-03-21 20:40:20,267 http_client.py POST - 200 OK: job_id: 653 3 tasks was created
+2019-03-21 20:40:30,281 http_client.py GET - 200 OK: job_id: 654
+2019-03-21 20:40:30,284 http_client.py POST - 400 Bad Request: job_id: 654 Can`t find file with words
+
+2019-03-21 20:40:38,009 http_client.py Client stoped working!
+
+2019-03-21 20:40:56,822 http_server.py serving at port 8000
+2019-03-21 20:40:59,642 http_client.py Client start working!
+
+2019-03-21 20:40:59,661 http_server.py GET - 200 OK: job_id: 655 in_progress
+2019-03-21 20:40:59,662 http_client.py GET - 200 OK: job_id: 655
+2019-03-21 20:40:59,665 http_server.py POST - 400: job_id: 655 failed
+2019-03-21 20:40:59,666 http_client.py POST - 400 Bad Request: job_id: 655 Can`t find file with words
+
+2019-03-21 20:41:09,681 http_server.py GET - 200 OK: job_id: 656 in_progress
+2019-03-21 20:41:09,705 http_client.py GET - 200 OK: job_id: 656
+2019-03-21 20:41:09,708 http_server.py POST - 400: job_id: 656 failed
+2019-03-21 20:41:09,709 http_client.py POST - 400 Bad Request: job_id: 656 mkdir: /home/oleksandr/jobs_tracker/working_dir/new_dir2: File exists
+
+
+2019-03-21 20:41:14,928 http_client.py Client stoped working!
+

@@ -11,48 +11,41 @@ def solve_job(job):
     executed
     :param job: job
     """
-    result = None
+
+
+    result = {'Success': None, 'Failed': None}
     config = json.loads(job["config"])
     if job["type"] == 1:
         try:
-            result = Solve.count_unique_words(config['path'])
-            print(result)
-            Jobs.done(job["job_id"])
+            result['Success'] = Solve.count_unique_words(config['path'])
         except FileNotFoundError:
-            fail = 'Can`t find file with words'
-            Jobs.failed(job["job_id"], fail)
+            result['Failed'] = 'Can`t find file with words'
     elif job["type"] == 2:
-        try:
-            result = Solve.make_dir(config['path'])
-            print(result)
-            Jobs.done(job["job_id"])
-        except FileExistsError:
-            fail = 'Directory already exist'
-            print(fail)
-            Jobs.failed(job["job_id"], fail)
+        output = Solve.make_dir(config['path'])
+        if output[0]:
+            result['Success'] = output[0].decode()
+        else:
+            result['Failed'] = output[1].decode()
+            if result['Failed'] == 'None' or result['Failed'] == '':
+                result['Failed'] = 'Directory already exists'
     elif job["type"] == 3:
-        try:
-            result = Solve.remove_dir(config['path'])
-            print(result)
-            Jobs.done(job["job_id"])
-        except FileNotFoundError:
-            fail = 'Directory Not Found'
-            Jobs.failed(job["job_id"], fail)
+        output = Solve.remove_dir(config['path'])
+        if output[0]:
+            result['Success'] = output[0].decode()
+        else:
+            result['Failed'] = output[1].decode()
+            if result['Failed'] == 'None' or result['Failed'] =='':
+                result['Failed'] = 'Such file not exists'
     elif job["type"] == 4:
-        try:
-            result = Solve.dump_command(config['command'])
-            print(result)
-            Jobs.done(job["job_id"])
-        except PermissionError:
-            fail = 'You don`t have permission to run this command'
-            Jobs.failed(job["job_id"], fail)
+        output = Solve.dump_command(config['command'])
+        if output[0]:
+            result['Success'] = output[0].decode()
+        else:
+            result['Failed'] = output[1].decode()
     elif job["type"] == 5:
         try:
-            result = Solve.generate_random_job(config['count'])
-            print(result)
-            Jobs.done(job["job_id"])
+            result['Success'] = Solve.generate_random_job(config['count'])
         except:
-            fail = 'You don`t have permission to run this command'
-            Jobs.failed(job["job_id"], fail)
+            result['Failed'] = 'You don`t have permission to run this command'
     return result
 

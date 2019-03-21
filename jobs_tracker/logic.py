@@ -4,6 +4,7 @@
 import os
 import random
 import MySQLdb
+import subprocess
 
 
 class Solve:
@@ -29,23 +30,22 @@ class Solve:
     @staticmethod
     def make_dir(config):
         """Make directory job_dir"""
-        os.mkdir(config)
-        result = f"{config} is created"
+        proc = subprocess.Popen(['mkdir', config], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        result = proc.communicate()
         return result
 
     @staticmethod
     def remove_dir(config):
         """Remove directory job_dir"""
-
-        os.rmdir(config)
-        result = f"Directory {config} was deleted!"
+        proc = subprocess.Popen(['rm', '-r', config], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        result = proc.communicate()
         return result
 
     @staticmethod
     def dump_command(config):
         """Dump result of shell command"""
-
-        result = os.popen(config).read()
+        proc = subprocess.Popen(config, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        result = proc.communicate()
         return result
 
     @staticmethod
@@ -64,7 +64,7 @@ class Solve:
             "/home/oleksandr/jobs_tracker/working_dir/new_dir2",
             "/home/oleksandr/jobs_tracker/working_dir/new_dir3"]
 
-        command = random.choice(['ls', 'date', 'ps'])
+        command = random.choice(['whoami', 'date', 'pwd'])
         for i in range(config):
             task_type = random.randint(1, 5)
             if task_type == 1:
