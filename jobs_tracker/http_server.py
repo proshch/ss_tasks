@@ -2,7 +2,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from db_conn import Jobs
 import json
 import logging
-from status_code import success_status
+
 
 FORMAT = '%(asctime)-15s %(filename)s %(message)s'
 logging.basicConfig(
@@ -11,7 +11,7 @@ logging.basicConfig(
                     filename='http.log',
                     filemode='a')
 
-logger = logging.getLogger('httpserver')
+logger = logging.getLogger('HttpServer')
 
 PORT = 8000
 server_address = ('', PORT)
@@ -30,7 +30,6 @@ class Handler(BaseHTTPRequestHandler):
             logger.info(f'GET - 200 OK: job_id: {select_job["job_id"]} {select_job["status"]}')
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            # Send the html message
             self.wfile.write(job.encode())
         except TypeError:
             self.send_response(404)

@@ -1,5 +1,6 @@
 """Module for set statuse codes"""
 
+
 def success_status(job_id):
     """Set success statuse code for different jobs
 

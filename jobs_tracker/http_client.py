@@ -1,3 +1,6 @@
+"""Module to implement http client"""
+
+
 import http.client
 import json
 import logging
@@ -13,7 +16,7 @@ logging.basicConfig(
                     filename='http.log',
                     filemode='a')
 
-logger = logging.getLogger('httpclient')
+logger = logging.getLogger('HttpClient')
 
 PORT = 8000
 conn = http.client.HTTPConnection("localhost", PORT)
@@ -51,7 +54,6 @@ try:
             logger.error('Remote Disconnected!')
         except http.client.BadStatusLine:
             conn.close()
-
-        time.sleep(10)
+        time.sleep(5)
 except KeyboardInterrupt:
-    logger.info('Client stoped working!\n')
+    logger.info('Client stopped working!\n')

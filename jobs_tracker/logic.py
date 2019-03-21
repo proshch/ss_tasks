@@ -1,7 +1,6 @@
 """Module for implementing class Solve with jobs logic"""
 
 
-import os
 import random
 import MySQLdb
 import subprocess
@@ -30,21 +29,29 @@ class Solve:
     @staticmethod
     def make_dir(config):
         """Make directory job_dir"""
-        proc = subprocess.Popen(['mkdir', config], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-        result = proc.communicate()
+        proc = subprocess.run('mkdir {}'.format(config), shell=True)
+        if proc.returncode == 0:
+            result = f'Dir {config} was created'
+        else:
+            result = None
         return result
+
 
     @staticmethod
     def remove_dir(config):
         """Remove directory job_dir"""
-        proc = subprocess.Popen(['rm', '-r', config], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-        result = proc.communicate()
+        proc = subprocess.run('rm -r {}'.format(config), shell=True)
+        if proc.returncode == 0:
+            result = f'Dir {config} was deleted'
+        else:
+            result = None
         return result
 
     @staticmethod
     def dump_command(config):
         """Dump result of shell command"""
-        proc = subprocess.Popen(config, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+
+        proc = subprocess.Popen(config, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         result = proc.communicate()
         return result
 

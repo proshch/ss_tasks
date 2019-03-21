@@ -74,11 +74,10 @@ class Jobs:
 
     @staticmethod
     def failed(job_id, fail):
-        """Set statuse done - true, new and in
-        progress - false
+        """Set status failed and set failed message as result
 
-        Positional argument:
-        job_id -- id of solved job
+        :job_id: -- id of solved job
+        :fail -- failed message
         """
 
         db_jobs = MySQLdb.connect("localhost", "oleksandr", "K@tchi1899", "jobs_tracker")
