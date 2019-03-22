@@ -25,7 +25,6 @@ class Jobs:
         db_jobs.close()
         job = {"job_id": job[0],
                "type": job[1],
-               "status": 'in_progress',
                "result": job[3],
                "ctime": str(job[4]),
                "mtime": str(job[5]),
