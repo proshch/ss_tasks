@@ -13,7 +13,7 @@ class Jobs:
     def get_job():
         """Return random available job from DB"""
 
-        db_jobs = MySQLdb.connect("localhost", "oleksandr", "K@tchi1899", "jobs_tracker")
+        db_jobs = MySQLdb.connect("localhost", "username", "password", "jobs_tracker")
         cursor = db_jobs.cursor()
         sql = """SELECT * FROM Jobs
                  WHERE status = 'new'
@@ -37,7 +37,7 @@ class Jobs:
         """Update statuse of job as in progress
 
         job_id -- id of the task"""
-        db_jobs = MySQLdb.connect("localhost", "oleksandr", "K@tchi1899", "jobs_tracker")
+        db_jobs = MySQLdb.connect("localhost", "username", "password", "jobs_tracker")
         cursor = db_jobs.cursor()
 
         jobs_sql = """UPDATE Jobs
@@ -59,7 +59,7 @@ class Jobs:
         status -- status
         result -- result of task
         """
-        db_jobs = MySQLdb.connect("localhost", "oleksandr", "K@tchi1899", "jobs_tracker")
+        db_jobs = MySQLdb.connect("localhost", "username", "password", "jobs_tracker")
         cursor = db_jobs.cursor()
 
         res = """UPDATE Jobs
@@ -79,7 +79,7 @@ class Jobs:
         :fail -- failed message
         """
 
-        db_jobs = MySQLdb.connect("localhost", "oleksandr", "K@tchi1899", "jobs_tracker")
+        db_jobs = MySQLdb.connect("localhost", "username", "password", "jobs_tracker")
         cursor = db_jobs.cursor()
 
         sql = """UPDATE Jobs
