@@ -59,7 +59,7 @@ class Solve:
     def generate_random_job(config):
         """Generate random job with shell commands"""
 
-        db_jobs = MySQLdb.connect("localhost", "oleksandr", "K@tchi1899", "jobs_tracker")
+        db_jobs = MySQLdb.connect("localhost", "username", "password", "jobs_tracker")
         cursor = db_jobs.cursor()
 
         file_path = [
