@@ -76,7 +76,7 @@ class Teachers(Persons):
     def __str__(self):
         return '{} - {} years old. Subject - {}. Salary - {}'.format(self.full_name,
                                                                      self.age,
-                                                                     subject,
+                                                                     self.subject,
                                                                      self.salary)
 
 class PrivateTeachers(Teachers):
