@@ -36,7 +36,7 @@ class DBConn:
 
         self.db.close()
 
-with DBConn('localhost', 'oleksandr', 'K@tchi1899', 'jobs_tracker') as db:
+with DBConn('localhost', 'username', 'password', 'database') as db:
     cursor = db.cursor()
 
     # execute SQL query using execute() method.
